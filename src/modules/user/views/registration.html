@@ -1,0 +1,40 @@
+<div id="wrapper" class="login-wrapper">
+    <!-- <div class="login-bg"></div> -->
+    <div class="login-inner">
+        <div class="login-cnt">
+            <div class="row">
+                <div class="col-md-12 visible-sm visible-xs text-center"><img src="assets/images/mobile-logo.png" height="125"></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" ng-model="userCtrl.userName" placeholder="First name" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" ng-model="userCtrl.password" placeholder="Last name" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="row mTop20">
+                <div class="col-md-4 col-sm-4 text-left mobile-link-left">
+                    <span class="input-group-addon" id="basic-addon1">@</span>
+                    <input type="password" class="form-control" ng-model="userCtrl.password" placeholder="Password" aria-describedby="basic-addon1">
+                </div>
+                <div class="col-md-4 col-sm-4 text-left mobile-link-left">
+                    <span class="input-group-addon" id="basic-addon1">@</span>
+                    <input type="password" class="form-control" ng-model="userCtrl.password" placeholder="Repeat password" aria-describedby="basic-addon1">
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <button class="common-button" ng-click="loginCtrl.submit()">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div>
+ -->
+    <footer class="text-center footer">© 2017 Elevar Technologies, Inc.</footer>
+</div>
+<!-- <span id="colorcheck">colorcheck</span>
+<a href="#" ng-click="vm.getToken();">Token</a>  -->

@@ -1,0 +1,225 @@
+
+$white-color: #ffffff;
+$body-bg-color: #F8F8F8;
+$primary-color: #3D4150;
+$active-color: #3ACB78;
+$border-color: #CACAD9;
+$blue-color: #109DF7;
+$red-color:#FF004F;
+$green-dark-color:#2FA360;
+$submenu-bg-color: #61677E;
+$text-color-dark: #262A34;
+$overlay-bg: rgba(31,31,45,0.7);
+$header-link-active: #F5F7F9;
+$table-header-color: #CDCDDB;
+$dash-panel-head-color: #62687E;
+$base-px: 10px;
+
+
+/*---------Events-----------*/
+$map-color: #FF7A4D;
+$calendar-color: #DD6EDD;
+$gantt-color: #00BFFF;
+$task-color: #DDDD00;
+$contact-color:#6EDD00;
+$file-color: #00B8B8;
+/*---------/.Events-----------*/
+
+$smartphone: 480px;
+$tabletPortrait: 767px;
+$tabletLandscape: 1024px;
+$desktop: 1174px;
+$largeScreen: 1400px;
+
+$font-stack: 'futuraMediumBT';
+
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+// @mixin border-radius($radius) {
+// -webkit-border-radius: $radius !important;
+// -moz-border-radius: $radius !important;
+// border-radius: $radius !important;
+// }
+
+
+
+
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+
+
+// @mixin font-size($sizeValue: 12 ){
+//   font-size: $sizeValue + px; //fallback for old browsers
+//   font-size: (0.125 * $sizeValue) + rem;
+// }
+
+
+
+
+@mixin border-radius($radius, $border-positions...) {
+$border-position-found: false;
+@each $position in $border-positions {
+$border-position-found: true;
+
+-webkit-border-#{$position}-radius: $radius;
+border-#{$position}-radius: $radius;
+background-clip: padding-box; // Impide que el bg color salga fuera del border
+}
+@if $border-position-found == false {
+-webkit-border-radius: $radius;
+border-radius: $radius;
+background-clip: padding-box;
+}
+}
+
+
+
+
+@mixin respondTo($media) {
+  @if $media == smartphone {
+    @media (max-width: $smartphone) { @content; }
+  }
+  @else if $media == tablet {
+    @media (min-width: $tabletPortrait) and (max-width: $tabletLandscape) { @content; }
+  }
+  @else if $media == smallScreen {
+    @media (max-width: $desktop) { @content; }
+  }
+  @else if $media == desktop {
+    @media (min-width: $desktop) { @content; }
+  }
+}
+
+
+@mixin ghostVerticalAlign(){
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; width: .1px;
+  }
+}
+
+
+
+@mixin triangle($direction, $size: 6px, $color: #222){
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'down'){
+    border-top: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'left'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == 'right'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+
+
+@mixin border($style, $color, $sides) {
+    @if ($style != "") {
+
+        @if ($sides == "") {
+            border: $style $color;
+
+        } @else {
+            @each $side in $sides {
+               @if ($side == 'top' or
+                    $side == 'right' or
+                    $side == 'bottom' or
+                    $side == 'left') {
+
+                    border-#{$side}: $style $color;
+                }
+            }
+        }  
+
+    }
+}
+
+
+@mixin alpha-attribute($attribute, $color, $background) {
+    $percent: alpha($color) * 100%;
+    $opaque: opacify($color, 1);
+    $solid-color: mix($opaque, $background, $percent);
+    #{$attribute}: $solid-color;
+    #{$attribute}: $color;
+}
+
+$prefixes: -webkit-, -moz-, -o-, "";
+
+@mixin borderRadius($size...) {
+  @if length($size) == 1 {
+    @each $prefix in $prefixes {
+      #{$prefix}border-radius: $size;
+    }
+  } @else {
+    @include customBorderRadius($size...);
+  }
+}
+
+@mixin customBorderRadius($topLeft: 0, $topRight: 0, $bottomRight: 0, $bottomLeft: 0) {
+  @each $prefix in $prefixes {
+    @if $prefix == "-moz-" {
+      @if $topLeft != 0 { -moz-border-radius-topleft: $topLeft; }
+      @if $topRight != 0 { -moz-border-radius-topright: $topRight; }
+      @if $bottomRight != 0 { -moz-border-radius-bottomright: $bottomRight; }
+      @if $bottomLeft != 0 { -moz-border-radius-bottomleft: $bottomLeft; }
+    } @else {
+      @if $topLeft != 0 { #{$prefix}border-top-left-radius: $topLeft; }
+      @if $topRight != 0 { #{$prefix}border-top-right-radius: $topRight; }
+      @if $bottomRight != 0 { #{$prefix}border-bottom-right-radius: $bottomRight; }
+      @if $bottomLeft != 0 { #{$prefix}border-bottom-left-radius: $bottomLeft; }
+    }
+  }
+}

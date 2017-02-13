@@ -1,0 +1,62 @@
+<!-- Page Content -->
+<div id="page-content-wrapper" class="myprofile">
+    <div class="row mBot15">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h1 class="page-head">My Profile</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-bg profile-top-block">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-12 text-xs-center">
+                        <div class="user-image-wrapper">
+                            <div class="user-image"> <img src="./assets/images/user.png"> </div>
+                            <a class="upload text-center mTop15" href="#"><i class="icon-cloud-upload icon"></i>Upload</a>
+                        </div>
+                        <hr class="vertical-hr">
+                    </div>
+                    <div class="col-md-9 col-sm-8 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">First Name</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="First Name" ng-model="userCtrl.userDetails.first_name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Last Name</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Last Name" ng-model="userCtrl.userDetails.last_name">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Occupation</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Eg:- Event Manager, Manger" ng-model="userCtrl.userDetails.occupation">
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-inline">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Company</label>
+                                    <span class="inline-data">{{ userCtrl.userDetails.company }}</span> </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Website</label>
+                                    <input type="url" class="form-control" id="exampleInputEmail1" placeholder="Eg:- http://yourwebsite.com" ng-model="userCtrl.userDetails.website">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button class="button btn-lg" ng-click="userCtrl.saveUserDetails()"><i class="fa fa-save"></i></button>
+        </div>
+    </div>
+</div>
+<!-- /#page-content-wrapper -->

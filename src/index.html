@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lazy Load</title>
+</head>
+
+<body ng-app="lazyApp">
+    <div ui-view="header"></div>
+    <div class="container-fluid">
+        <div ui-view="login"></div>
+    </div>
+    <div class="container-fluid">
+
+
+        <div id="wrapper" ng-if="isWrapper">
+            <div ui-view="sidebar"></div>
+            <div id="page-content-wrapper">
+                <div ui-view="content"></div>
+                <div ui-view="footer"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="assets/dhtmlx/codebase/dhtmlxgantt.js"></script> -->
+</body>
+
+</html>
