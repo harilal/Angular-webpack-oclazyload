@@ -6,7 +6,8 @@
     "start": "hs build",
     "build": "webpack --progress --config=webpack.build.config.js -p",
     "dev": "webpack-dev-server --content-base build --hot --inline --devtool eval",
-    "test": "karma start test/karma.config.js"
+    "test": "karma start test/karma.config.js",
+     "stat": "npm run build && webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json build/"
   },
   "author": "harilal",
   "license": "MIT",
@@ -39,6 +40,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
+    "webpack-bundle-analyzer": "^2.3.0",
     "webpack-dev-server": "^1.16.2"
   }
 }
