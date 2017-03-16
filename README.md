@@ -1,6 +1,6 @@
 # AngularJS - Webpack -OcLazyLoad
 
-#Pre project setup
+# Pre project setup
 1. Inside project directory run `npm install`
 
 
